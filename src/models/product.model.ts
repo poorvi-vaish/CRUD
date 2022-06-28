@@ -5,6 +5,7 @@ import Category from './category.model';
 const productSchema = new Schema({
   name: String,
   price: Number,
+  description: String,
   category: { type: Schema.Types.ObjectId, ref: Category },
 });
 
