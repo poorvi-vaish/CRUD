@@ -5,11 +5,17 @@ import nodemailer from "nodemailer";
 const sendMail: Controller = async (req, res, next) => {
   try {
     const { email } = req.body;
+    const foundUser = User.findOne({ email });
+    if (!foundUser) {
+      return res.status(404).json({
+        message: "User not found"
+      });
+    }
     const FRONTEND = "https://www.google.com";
     const user = await User.findOne({email});
     const link = `${FRONTEND}/${user?._id}`;
-    var userEmail = "img_2019047@iiitm.ac.in";
-    var userPassword = "ipgmba047";
+    var userEmail = process.env.EMAIL_USER;
+    var userPassword = process.env.EMAIL_PASSWORD;
 
     var transporter = nodemailer.createTransport(
       `smtps://${userEmail}:${userPassword}@smtp.gmail.com`
