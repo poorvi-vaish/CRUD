@@ -11,7 +11,7 @@ const addNew: Controller = async (req, res, next) => {
     });
     const newProduct = await product.save();
     return res.status(200).json({
-      message: `${name} Product added successfully`,
+      message: `${name} added successfully`,
       data: {newProduct}
     })
   }

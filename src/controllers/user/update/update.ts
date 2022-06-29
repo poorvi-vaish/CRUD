@@ -7,7 +7,6 @@ const update: Controller = async (req, res, next) => {
     const { name, email, oldPassword, newPassword } = req.body;
     if (type == "profile") {
       const updatedProfile = await User.findOneAndUpdate({email: email}, {name: name}, {new:true});
-      console.log(updatedProfile);
       return res.status(200).json({
         message: "Profile updated successfully",
         data: {updatedProfile}

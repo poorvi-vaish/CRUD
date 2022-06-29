@@ -4,6 +4,7 @@ import Product from './product.model';
 
 const categorySchema = new Schema({
   name: String,
+  description: String,
 });
 
 export default model<ICategory>("Category", categorySchema);
