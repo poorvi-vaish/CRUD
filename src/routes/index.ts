@@ -1,11 +1,13 @@
-import { Router } from "express";
-import userRouter from "./user";
-import categoryRouter from "./category";
-import productRouter from "./product";
+import { createMovie, getAllMovies, updateMovie, deleteMovie } from "../controllers/Movies";
+import { watchedMovies, watchList } from "../controllers/User/updateWatchList";
+import { Router } from 'express';
 
-const router = Router();
-router.use("/user", userRouter);
-router.use("/category", categoryRouter);
-router.use("/product", productRouter);
+const routes = Router();
+routes.get("/", getAllMovies);
+routes.post("/add", createMovie);
+routes.put("/update", updateMovie);
+routes.delete("/delete", deleteMovie);
+routes.post("/watchedMovies", watchedMovies);
+routes.post("/watchList", watchList);
 
-export default router;
+export default routes;
